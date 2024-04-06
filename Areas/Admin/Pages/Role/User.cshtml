@@ -1,0 +1,46 @@
+﻿@page "/admin/role/users/"
+@model E_Commerces.Areas.Admin.Pages.Role.UserModel
+@{
+    ViewData["Title"] = "User List";
+}
+
+<h4>@ViewData["Title"]</h4>
+<p>Number Of Accounts : @Model.totalUsers</p>
+
+<partial name="_StatusMessage" model="@Model.StatusMessage" />
+
+<table class="table table-striped">
+    <tr>
+        <th>UserName</th>
+        <th>Roles</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var user in @Model.users)
+    {
+        <tr>
+            <td>@user.UserName</td>
+            <td>@user.RoleNames</td>
+            <td>
+                <form method="post" class="d-inline">
+                <button name="Input.ID" value="@user.Id" class="btn btn-primary btn-sm" 
+                        asp-page="./AddUserRole" asp-route-id="@user.Id">Update Role</button>
+                </form>
+            </td>
+        </tr>
+        
+    }
+</table>
+@{
+
+
+    var datapaging = new E_Commerces.Helpers.PagingModel()
+    {
+        currentPage = Model.currentPage,
+        countPages = Model.countPages,
+        generateUrl = (int? p) => Url.Page("./User", new {p = p})
+    };
+}
+<partial name="_Paging" model="@datapaging" />
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

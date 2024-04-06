@@ -1,0 +1,78 @@
+﻿@model E_Commerces.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+    var IsAdmin = User.IsInRole("System Admin");
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+        <dd class = "col-sm-10 ">
+            @ViewBag.FormattedCreatedAt
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+        <dd class = "col-sm-10">
+            @ViewBag.FormattedUpdatedAt
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+@*         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Id)
+        </dd> *@
+    </dl>
+</div>
+<div>
+    <h4>Customer Info</h4>
+    <p>Customer Full Name : @Model.Customer.FullName</p>
+    <p>Customer Address : @Model.Customer.Address</p>
+    <p>Customer Phone Number : @Model.Customer.PhoneNumber</p>
+    <p>Customer Email : @Model.Customer.Email</p>
+</div>
+<div>
+    <h4>Order Details</h4>
+    <hr />
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderDetail in Model.OrderDetails)
+            {
+                <tr>
+                    <td>@orderDetail.Product.Name</td>
+                    <td>@orderDetail.Quantity</td>
+                    <td>@orderDetail.Price</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div>
+    @if (IsAdmin)
+    {
+    <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    }
+    |<a asp-action="Index">Back to List</a>
+</div>
+
