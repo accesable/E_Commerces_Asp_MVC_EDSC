@@ -63,6 +63,7 @@ namespace E_Commerces.Controllers
             var order = await _context.Orders
                 .Include(d => d.OrderDetails).ThenInclude(od => od.Product)
                 .Include(o => o.Customer)
+                .Include(i => i.Invoice)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {

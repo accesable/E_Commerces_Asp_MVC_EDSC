@@ -18,7 +18,7 @@ namespace E_Commerces.Models
 
         // VAT charge percentage
         [Required]
-        public decimal VatRate { get; set; } = new decimal(0.05);
+        public decimal VatRate { get; set; } 
 
         // Total VAT charge
         [Required]
@@ -28,7 +28,7 @@ namespace E_Commerces.Models
         public decimal Promotion { get; set; }
 
         // Total price after applying promotions and VAT
-        public decimal FinalPrice => TotalPrice - Promotion + VatCharge;
+        public decimal FinalPrice { get; set; } /*= TotalPrice - Promotion + VatCharge;*/
         public virtual Payment? Payment { get; set; }
     }
 }

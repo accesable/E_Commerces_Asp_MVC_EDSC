@@ -109,7 +109,7 @@ namespace E_Commerces.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Categories");
+                    b.ToTable("Categories", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.Image", b =>
@@ -129,7 +129,7 @@ namespace E_Commerces.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("Images");
+                    b.ToTable("Images", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.Invoice", b =>
@@ -150,7 +150,7 @@ namespace E_Commerces.Migrations
 
                     b.HasIndex("PaymentId");
 
-                    b.ToTable("Invoices");
+                    b.ToTable("Invoices", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.Order", b =>
@@ -176,7 +176,7 @@ namespace E_Commerces.Migrations
 
                     b.HasIndex("CustomerId");
 
-                    b.ToTable("Orders");
+                    b.ToTable("Orders", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.OrderDetail", b =>
@@ -203,7 +203,7 @@ namespace E_Commerces.Migrations
 
                     b.HasIndex("ProductId");
 
-                    b.ToTable("OrderDetails");
+                    b.ToTable("OrderDetails", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.Payment", b =>
@@ -220,7 +220,7 @@ namespace E_Commerces.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Payment");
+                    b.ToTable("Payment", (string)null);
                 });
 
             modelBuilder.Entity("E_Commerces.Models.Product", b =>
@@ -258,7 +258,7 @@ namespace E_Commerces.Migrations
 
                     b.HasIndex("categoryId");
 
-                    b.ToTable("Products");
+                    b.ToTable("Products", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
