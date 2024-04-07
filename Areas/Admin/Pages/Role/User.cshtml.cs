@@ -10,18 +10,19 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using E_Commerces.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace E_Commerces.Areas.Admin.Pages.Role
 {
+    [Authorize(Roles = "System Admin")]
     public class UserModel : PageModel
     {
 
         private readonly UserManager<AppUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
 
 
 
-        public UserModel(RoleManager<IdentityRole> roleManager,
+        public UserModel(
                           UserManager<AppUser> userManager)
         {
             _userManager = userManager;
@@ -31,7 +32,7 @@ namespace E_Commerces.Areas.Admin.Pages.Role
 
         public class UserWithRoles : AppUser
         {
-            public string RoleNames { get; set; }
+            public string ? RoleNames { get; set; }
         }
 
         [TempData] 
@@ -43,7 +44,7 @@ namespace E_Commerces.Areas.Admin.Pages.Role
         public int countPages { get; set; }
         public int totalUsers { get; set; }
 
-        public string listroles { get; set; }
+        public string? listroles { get; set; }
 
         public IActionResult OnPost() => NotFound("No post");
 

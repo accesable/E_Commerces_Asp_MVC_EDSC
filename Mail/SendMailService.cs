@@ -50,7 +50,7 @@ namespace E_Commerces.Mail
                 var emailsavefile = string.Format(@"mailssave/{0}.eml", Guid.NewGuid());
                 await message.WriteToAsync(emailsavefile);
 
-                _logger.LogInformation("Lỗi gửi mail, lưu tại - " + emailsavefile);
+                _logger.LogInformation("Email Sending Error Saving Mail At - " + emailsavefile);
                 _logger.LogError(ex.Message);
             }
             smtp.Disconnect(true);

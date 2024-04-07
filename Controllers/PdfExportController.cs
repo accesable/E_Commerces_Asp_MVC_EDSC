@@ -73,7 +73,7 @@ public class PdfExportController : Controller
         htmlContent.AppendLine("</style>");
         htmlContent.AppendLine("</head>");
         htmlContent.AppendLine("<body>");
-        htmlContent.AppendLine($"<h1>E Commerces Invoices {order.Invoice.Id}</h1>");
+        htmlContent.AppendLine($"<h1>E Commerces Invoice {order.Invoice.Id}</h1>");
         // Add order details to HTML content
         htmlContent.AppendLine("<div>");
         htmlContent.AppendLine($"<h4>Order ID : {order.Id}</h4>");
