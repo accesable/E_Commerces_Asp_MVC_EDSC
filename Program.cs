@@ -1,3 +1,5 @@
+using DinkToPdf;
+using DinkToPdf.Contracts;
 using E_Commerces.Data;
 using E_Commerces.Mail;
 using E_Commerces.Models;
@@ -19,6 +21,7 @@ builder.Services.AddTransient<IEmailSender, SendMailService>();
 builder.Services.AddRazorPages();
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 builder.Services.AddSession(config =>
 {
     config.Cookie.Name = "E_Commerce_Enterprise_System";
@@ -30,7 +33,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
         options.UseMySQL(connectionString);
     });
 
-builder.Services.AddIdentity<AppUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders().AddDefaultUI();
+builder.Services.AddIdentity<AppUser,IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 builder.Services.Configure<IdentityOptions>(options => {
     options.Password.RequireDigit = false; 
     options.Password.RequireLowercase = false; 
@@ -50,6 +53,16 @@ builder.Services.Configure<IdentityOptions>(options => {
     options.SignIn.RequireConfirmedEmail = true;            
     options.SignIn.RequireConfirmedPhoneNumber = false;     
 
+});
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Cookie settings
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+    options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.SlidingExpiration = true;
 });
 builder.Services.AddAuthentication().AddGoogle(
     GoogleOptions =>

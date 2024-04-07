@@ -13,7 +13,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace E_Commerces.Controllers
 {
-    [Authorize(Roles ="Customer")]
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -57,12 +57,14 @@ namespace E_Commerces.Controllers
         }
 
         // GET: Products
+        [Authorize(Roles = "System Admin")]
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.Products.Include(p => p.Category);
             return View(await applicationDbContext.ToListAsync());
         }
         // GET: Products/Shopping
+        [Authorize(Roles = "Customer")]
         public async Task<IActionResult> Shopping()
         {
             var applicationDbContext = _context.Products.Include(i=>i.Images).Include(p => p.Category);
@@ -298,6 +300,7 @@ namespace E_Commerces.Controllers
         {
             return View(GetCartItems());
         }
+        public const decimal VAT_RATE = 0.05m;
 
         public IActionResult CheckOut()
         {
@@ -338,10 +341,12 @@ namespace E_Commerces.Controllers
                 UpdatedAt = DateTime.Now,
                 Status = "Not Completed",
                 TotalPrice = totalPrice, // Set total price for the order
-                VatRate = 0.15m, // Example: Assuming VAT rate is 15%
-                VatCharge = totalPrice * 0.15m, // Calculate VAT charge
+                VatRate = VAT_RATE, // Example: Assuming VAT rate is 15%
+                VatCharge = totalPrice * VAT_RATE, // Calculate VAT charge
                 Id = order.Id // Associate the invoice with the order
             };
+
+            invoice.FinalPrice = invoice.TotalPrice - invoice.Promotion + invoice.VatCharge;
 
             // Add the invoice to the database
             _context.Invoices.Add(invoice);

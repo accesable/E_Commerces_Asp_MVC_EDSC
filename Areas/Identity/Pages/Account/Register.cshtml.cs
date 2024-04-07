@@ -132,8 +132,9 @@ namespace E_Commerces.Areas.Identity.Pages.Account
                 {
                     // if new user is created
                     _logger.LogInformation("User created a new account with password.");
-
+                    
                     var userId = await _userManager.GetUserIdAsync(user);
+                    await _userManager.AddToRoleAsync(user, "Customer");
                     // generate confirmation token based on this new user
                     // and send to the user via Email Service which injected in this project
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

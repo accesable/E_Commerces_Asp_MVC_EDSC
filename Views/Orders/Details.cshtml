@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Details";
     var IsAdmin = User.IsInRole("System Admin");
+    var vatrate =Model.Invoice.VatRate * 100;
 }
 
 <h1>Details</h1>
@@ -67,11 +68,19 @@
         </tbody>
     </table>
 </div>
+<div>
+    <h4>Invoice</h4>
+    <hr />
+    <p>Price before VAT charged : @Model.Invoice.TotalPrice</p>
+    <p>VAT charged (@vatrate % per transaction) : @Model.Invoice.VatCharge</p>
+    <p>Price after VAT charged : @Model.Invoice.FinalPrice</p>
+</div>
 
 <div>
     @if (IsAdmin)
     {
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
+    <a asp-controller="PdfExport" asp-action="ExportInvoiceToPdf" asp-route-id="@Model?.Id">Export Invoice</a>
     }
     |<a asp-action="Index">Back to List</a>
 </div>

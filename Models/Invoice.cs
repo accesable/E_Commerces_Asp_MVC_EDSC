@@ -11,7 +11,8 @@ namespace E_Commerces.Models
         public DateTime CreatedAt { get; set; } = DateTime.Now;
         public DateTime UpdatedAt { get; set; } = DateTime.Now;
         [Required]
-        public string Status = "Not Completed";
+        [StringLength(128)]
+        public string Status { get; set; } = "Not Completed";
         // Total price before VAT and promotions
         [Required]
         public decimal TotalPrice { get; set; }
@@ -21,7 +22,6 @@ namespace E_Commerces.Models
         public decimal VatRate { get; set; } 
 
         // Total VAT charge
-        [Required]
         public decimal VatCharge { get; set; } 
 
         // Promotion applied to the total price
