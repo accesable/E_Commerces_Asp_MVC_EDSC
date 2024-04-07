@@ -22,11 +22,41 @@ namespace E_Commerces.Controllers
         }
 
         // GET: Invoices
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(DateTime? startDate, DateTime? endDate)
         {
-            var applicationDbContext = _context.Invoices.Include(i => i.Order);
-            return View(await applicationDbContext.ToListAsync());
+            IQueryable<Invoice> query = _context.Invoices.Include(i => i.Order);
+
+            // Filter invoices by start date if provided
+            if (startDate.HasValue)
+            {
+                query = query.Where(i => i.CreatedAt.Date >= startDate.Value.Date);
+            }
+
+            // Filter invoices by end date if provided
+            if (endDate.HasValue)
+            {
+                query = query.Where(i => i.CreatedAt.Date <= endDate.Value.Date);
+            }
+
+            var invoices = await query.ToListAsync();
+       
+            return View(invoices);
         }
+        // Action to calculate revenue within a date range
+        public async Task<decimal> CalculateRevenue(DateTime startDate, DateTime endDate)
+        {
+            // Fetch all invoices within the specified date range from the database including related orders
+            var invoices = await _context.Invoices
+                .Include(i => i.Order)
+                .Where(i => i.CreatedAt >= startDate && i.CreatedAt <= endDate)
+                .ToListAsync();
+
+            // Calculate total revenue
+            decimal totalRevenue = invoices.Sum(i => i.FinalPrice);
+
+            return totalRevenue;
+        }
+
 
         // GET: Invoices/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -2,13 +2,31 @@
 
 @{
     ViewData["Title"] = "Index";
+
 }
 
-<h1>Index</h1>
+<h1>All Invoice</h1>
 
-<p>
+@* <p>
     <a asp-action="Create">Create New</a>
-</p>
+</p> *@
+
+<div class="row">
+    <div class="col-md-4">
+        <p>Filter by date:</p>
+        <form asp-action="Index" method="get">
+            <div class="form-group">
+                <label for="startDate">Start Date:</label>
+                <input type="date" class="form-control" id="startDate" name="startDate">
+            </div>
+            <div class="form-group">
+                <label for="endDate">End Date:</label>
+                <input type="date" class="form-control" id="endDate" name="endDate">
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+</div>
 <table class="table">
     <thead>
         <tr>
@@ -72,12 +90,31 @@
             <td>
                 @Html.DisplayFor(modelItem => item.FinalPrice)
             </td>
-            <td>
+@*             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                 <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
+            </td> *@
         </tr>
 }
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="8" style="text-align: right;"><strong>Total Revenue:</strong></td>
+            <td id="totalPrice"></td>
+        </tr>
+    </tfoot>
 </table>
+<script>
+    // Calculate total final price
+    @{
+
+        double totalPrice = 0;
+        foreach (var item in Model)
+        {
+            totalPrice += (double) item.FinalPrice;
+        }
+    }
+
+    document.getElementById("totalPrice").innerText = @totalPrice;
+</script>

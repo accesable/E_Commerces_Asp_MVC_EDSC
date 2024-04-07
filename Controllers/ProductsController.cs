@@ -69,10 +69,21 @@ namespace E_Commerces.Controllers
         }
         // GET: Products/Shopping
         [Authorize(Roles = "Customer")]
-        public async Task<IActionResult> Shopping()
+        public async Task<IActionResult> Shopping(int ? category)
         {
-            var applicationDbContext = _context.Products.Include(i=>i.Images).Include(p => p.Category);
-            return View(await applicationDbContext.ToListAsync());
+            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name");
+
+            IQueryable<Product> productsQuery = _context.Products.Include(i => i.Images).Include(p => p.Category);
+
+            if (category != null)
+            {
+                // Filter products by category if category parameter is not null or empty
+                productsQuery = productsQuery.Where(p => p.Category.Id == category);
+            }
+
+            var products = await productsQuery.ToListAsync();
+
+            return View(products);
         }
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -95,6 +106,7 @@ namespace E_Commerces.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "System Admin")]
         public IActionResult Create()
         {
             ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name");
@@ -106,6 +118,7 @@ namespace E_Commerces.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "System Admin")]
         public async Task<IActionResult> Create([Bind("Id,Name,Description,OriginalPrice,Size,Color,categoryId,Files")] Product product)
         {
             if (ModelState.IsValid)
@@ -154,7 +167,7 @@ namespace E_Commerces.Controllers
             {
                 return NotFound();
             }
-            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Description", product.categoryId);
+            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View(product);
         }
 
@@ -190,7 +203,7 @@ namespace E_Commerces.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Description", product.categoryId);
+            ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name");
             return View(product);
         }
 
@@ -378,7 +391,7 @@ namespace E_Commerces.Controllers
                 htmlContent);
             ClearCart();
 
-            return RedirectToAction("Details", "Orders",order.Id);
+            return RedirectToAction("Details", "Orders",new { id = order.Id });
         }
         private string GenerateInvoiceHtml(Order order,Invoice invoice)
         {

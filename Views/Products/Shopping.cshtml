@@ -5,6 +5,18 @@
 }
 
 <h1>Products</h1>
+<div class="row">
+    <div class="col-md-4">
+        <p>Filter by category:</p>
+        <form asp-action="Shopping" method="get">
+            <div class="form-group">
+                <label for="category">category</label>
+                <select for="category" class="form-control" asp-items="ViewBag.categoryId" name="category" id="category"></select>
+            </div>
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </form>
+    </div>
+</div>
 
 <div class="row">
     @foreach (var product in Model)
