@@ -10,6 +10,7 @@ using E_Commerces.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Stripe.Checkout;
 
 namespace E_Commerces.Controllers
 {
@@ -63,7 +64,7 @@ namespace E_Commerces.Controllers
             var order = await _context.Orders
                 .Include(d => d.OrderDetails).ThenInclude(od => od.Product)
                 .Include(o => o.Customer)
-                .Include(i => i.Invoice)
+                .Include(i => i.Invoice).ThenInclude(p=>p.Payment)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (order == null)
             {
@@ -142,6 +143,7 @@ namespace E_Commerces.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "System Admin")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,Status")] Order order)
         {
             if (id != order.Id)
@@ -216,7 +218,6 @@ namespace E_Commerces.Controllers
             {
                 return NotFound();
             }
-
             var order = await _context.Orders
                 .Include(o => o.Customer)
                 .FirstOrDefaultAsync(m => m.Id == id);
@@ -225,8 +226,21 @@ namespace E_Commerces.Controllers
                 return NotFound();
             }
 
-            return View(order);
+            if (User.IsInRole("System Admin"))
+            {
+                return View(order);
+            }
+            else if (User.IsInRole("Customer") && order.Status.Equals("Waiting Confirmed"))
+            {
+                return View(order);
+            }
+            else
+            {
+                return RedirectToAction(nameof(Details),new {id=id});
+            }
+
         }
+        public const string DOMAIN = "https://localhost:7045";
 
         // POST: Orders/Delete/5
         [HttpPost, ActionName("Delete")]
@@ -234,13 +248,92 @@ namespace E_Commerces.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var order = await _context.Orders.FindAsync(id);
-            if (order != null)
+            if (order == null)
             {
-                _context.Orders.Remove(order);
+                return NotFound();
+            }
+            _context.Orders.Remove(order);
+
+            if (User.IsInRole("System Admin"))
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else if (User.IsInRole("Customer") && order.Status.Equals("Waiting Confirmed"))
+            {
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                return RedirectToAction(nameof(Details), new { id = id });
             }
 
+        }
+        [HttpPost, ActionName("CreatePayment")]
+        public async Task<IActionResult> CreatePayment(int id)
+        {
+            var user = await _userManager.GetUserAsync(User);
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var order = await _context.Orders
+                .Include(d => d.OrderDetails).ThenInclude(od => od.Product)
+                .Include(o => o.Customer)
+                .Include(i => i.Invoice).ThenInclude(p=>p.Payment)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (order == null)
+            {
+                return NotFound();
+            }
+            if (order.Invoice.Payment != null)
+            {
+                return RedirectToAction(nameof(Details), new { id = id });
+            }
+
+            ViewBag.FormattedCreatedAt = order.CreatedAt.ToString("yyyy-MM-dd HH:mm");
+            ViewBag.FormattedUpdatedAt = order.UpdatedAt.ToString("yyyy-MM-dd HH:mm");
+            var options = new SessionCreateOptions
+            {
+                SuccessUrl = DOMAIN + $"/Orders/Details/{order.Id}",
+                CancelUrl = DOMAIN + $"/Orders/Details/{order.Id}",
+                LineItems = new List<SessionLineItemOptions>()
+                {
+                    new SessionLineItemOptions
+                    {
+                        Quantity = 1,
+                        PriceData = new SessionLineItemPriceDataOptions()
+                        {
+                            UnitAmountDecimal = Math.Ceiling(order.Invoice.FinalPrice) ,
+                            Currency = "usd",
+                            ProductData = new SessionLineItemPriceDataProductDataOptions()
+                            {
+                                Name = order.Id.ToString(),
+                            }
+                        },
+                    },
+                },
+                Mode = "payment",
+                CustomerEmail = user.Email,
+            };
+            var services = new SessionService();
+
+            Session session = services.Create(options);
+
+            Response.Headers.Add("Location", session.Url);
+
+            order.Invoice.Payment = new Payment
+            {
+                Amount = order.Invoice.FinalPrice
+            };
+            order.Invoice.Status = "Payed";
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+
+
+            return new StatusCodeResult(303);
+
         }
 
         private bool OrderExists(int id)

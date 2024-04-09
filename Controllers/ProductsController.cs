@@ -12,6 +12,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Text;
+using Stripe.Checkout;
+using Stripe;
+using Invoice = E_Commerces.Models.Invoice;
 
 namespace E_Commerces.Controllers
 {
@@ -73,7 +76,7 @@ namespace E_Commerces.Controllers
         {
             ViewData["categoryId"] = new SelectList(_context.Categories, "Id", "Name");
 
-            IQueryable<Product> productsQuery = _context.Products.Include(i => i.Images).Include(p => p.Category);
+            IQueryable<Models.Product> productsQuery = _context.Products.Include(i => i.Images).Include(p => p.Category);
 
             if (category != null)
             {
@@ -119,7 +122,7 @@ namespace E_Commerces.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "System Admin")]
-        public async Task<IActionResult> Create([Bind("Id,Name,Description,OriginalPrice,Size,Color,categoryId,Files")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Description,OriginalPrice,Size,Color,categoryId,Files")] Models.Product product)
         {
             if (ModelState.IsValid)
             {
@@ -176,7 +179,7 @@ namespace E_Commerces.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,OriginalPrice,Size,Color,categoryId")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,OriginalPrice,Size,Color,categoryId")] Models.Product product)
         {
             if (id != product.Id)
             {
@@ -323,6 +326,7 @@ namespace E_Commerces.Controllers
             return View(GetCartItems());
         }
         public const decimal VAT_RATE = 0.05m;
+        public const string DOMAIN = "https://localhost:7045";
 
         public async Task<IActionResult> CheckOut()
         {
@@ -389,9 +393,92 @@ namespace E_Commerces.Controllers
 
             await _emailSender.SendEmailAsync(user.Email, $"Your Trending Fashion Order's Invoice {order.Id}",
                 htmlContent);
-            ClearCart();
 
-            return RedirectToAction("Details", "Orders",new { id = order.Id });
+            /*var options = new PaymentIntentCreateOptions
+            {
+                Amount = (long)invoice.FinalPrice,
+                Currency = "usd",
+                AutomaticPaymentMethods = new PaymentIntentAutomaticPaymentMethodsOptions
+                {
+                    Enabled = true,
+                },
+
+            };
+            var service = new PaymentIntentService();
+            service.Create(options);*/
+            /*            var options = new Stripe.Checkout.SessionCreateOptions
+                        {
+                            SuccessUrl = "https://example.com/success",
+                            LineItems = new List<Stripe.Checkout.SessionLineItemOptions>
+                            {
+                                new Stripe.Checkout.SessionLineItemOptions
+                                {
+                                    Price = "price_1MotwRLkdIwHu7ixYcPLm5uZ",
+                                    Quantity = 2,
+                                },
+                            },
+
+                            Mode = "payment",
+                            PaymentIntentData = new SessionPaymentIntentDataOptions
+                            {
+
+                            }
+                        };
+                        var service = new Stripe.Checkout.SessionService();
+                        service.Create(options);*/
+
+            /*var options = new SessionCreateOptions
+            {
+                SuccessUrl = DOMAIN + $"/Orders/Details/{order.Id}",
+                CancelUrl = DOMAIN + $"/cart",
+                LineItems = new List<SessionLineItemOptions>()
+                {
+                    new SessionLineItemOptions
+                    {
+                        Quantity = 1,
+                        PriceData = new SessionLineItemPriceDataOptions()
+                        {
+                            UnitAmountDecimal = Math.Ceiling(order.Invoice.FinalPrice) ,
+                            Currency = "usd",
+                            ProductData = new SessionLineItemPriceDataProductDataOptions()
+                            {
+                                Name = order.Id.ToString(),
+                            }
+                        },
+                    },
+                },
+                Mode = "payment",
+                CustomerEmail = user.Email,
+            };*/
+
+            /*foreach (var item in order.OrderDetails)
+            {
+                var sessionListItem = new SessionLineItemOptions
+                {
+                    PriceData = new SessionLineItemPriceDataOptions()
+                    {
+                        UnitAmountDecimal = item.Price * (decimal)item.Quantity,
+                        Currency = "usd",
+                        ProductData = new SessionLineItemPriceDataProductDataOptions()
+                        {
+                            Name = item.Product.Name
+                        }
+                    },
+                    Quantity = item.Quantity,
+                };
+                options.LineItems.Add(sessionListItem);
+            }*/
+            /*var services = new SessionService();
+
+            Session session = services.Create(options);
+
+            Response.Headers.Add("Location", session.Url);*/
+
+            ClearCart();
+            /*return new StatusCodeResult(303);*/
+
+            return RedirectToAction("Details","Orders",new {id= order.Id });
+
         }
         private string GenerateInvoiceHtml(Order order,Invoice invoice)
         {

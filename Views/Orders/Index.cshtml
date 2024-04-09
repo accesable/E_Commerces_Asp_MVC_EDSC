@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Index";
     var IsAdmin = User.IsInRole("System Admin");
-    var IsDeleteByCustomers = true;
 }
 
 <h1>Order Listed</h1>
@@ -46,11 +45,14 @@
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
                     }|
                     <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    @if (IsDeleteByCustomers)
+                    @if (!IsAdmin && item.Status.Equals("Waiting Confirmed"))
                     {
-                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a> 
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }else if (IsAdmin)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                     }
-            </td>
+                </td>
         </tr>
 }
     </tbody>

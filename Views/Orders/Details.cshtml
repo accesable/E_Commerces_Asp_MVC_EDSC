@@ -82,6 +82,23 @@
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a>
     <a asp-controller="PdfExport" asp-action="ExportInvoiceToPdf" asp-route-id="@Model?.Id">Export Invoice</a>
     }
+    @if (Model.Invoice.Payment == null && IsAdmin)
+    {
+        <form method="post" asp-controller="Orders" asp-action="CreatePayment" asp-route-id="@Model?.Id">
+            <input type="submit" value="Create Payment" class="btn btn-primary" />
+        </form>
+
+    }
+    else if (Model.Invoice.Payment == null && !IsAdmin && Model.Status.Equals("Waiting Confirmed"))
+    {
+        <form method="post" asp-controller="Orders" asp-action="CreatePayment" asp-route-id="@Model?.Id">
+            <input type="submit" value="Create Payment" class="btn btn-primary" />
+        </form>
+    }
+    else
+    {
+        <p>This Invoices is Payed at @Model.Invoice.Payment.CreatedAt.ToString()</p>
+    }
     |<a asp-action="Index">Back to List</a>
 </div>
 

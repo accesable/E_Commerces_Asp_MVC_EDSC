@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
+using Stripe;
 using System.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -96,6 +97,8 @@ app.UseStaticFiles(new StaticFileOptions
            Path.Combine(builder.Environment.ContentRootPath, "ImageStaticFiles")),
     RequestPath = "/ImageStaticFiles"
 });
+
+StripeConfiguration.ApiKey = builder.Configuration.GetSection("Stripe:SecretKey").Get<string>();
 app.UseSession();
 app.UseRouting();
 app.MapRazorPages();

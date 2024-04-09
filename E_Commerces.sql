@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: Apr 07, 2024 at 05:41 AM
+-- Generation Time: Apr 09, 2024 at 07:04 AM
 -- Server version: 8.2.0
 -- PHP Version: 8.2.8
 
@@ -67,7 +67,11 @@ INSERT INTO `Images` (`ImageId`, `ImageUrl`, `ProductId`) VALUES
 (7, 'Products/e5zoib3t.3qe.png', 2),
 (8, 'Products/n1w555gi.jfa.png', 3),
 (9, 'Products/italn4jy.nup.png', 3),
-(10, 'Products/gh105u0a.1x1.png', 3);
+(10, 'Products/gh105u0a.1x1.png', 3),
+(11, 'Products/2uxgrwdd.aif.png', 4),
+(12, 'Products/nh3dlkeh.szg.png', 4),
+(13, 'Products/dr3m4dn2.gbe.jpg', 5),
+(14, 'Products/cwokcigb.mrl.png', 5);
 
 -- --------------------------------------------------------
 
@@ -93,7 +97,32 @@ CREATE TABLE `Invoices` (
 --
 
 INSERT INTO `Invoices` (`Id`, `CreatedAt`, `UpdatedAt`, `PaymentId`, `FinalPrice`, `Promotion`, `Status`, `TotalPrice`, `VatCharge`, `VatRate`) VALUES
-(29, '2024-04-07 12:25:16.131069', '2024-04-07 12:25:16.131103', NULL, 389.55, 0.00, 'Not Completed', 371.00, 18.55, 0.05);
+(30, '2024-04-07 13:53:17.350812', '2024-04-07 13:53:17.350834', 1, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(35, '2024-04-07 14:01:08.038967', '2024-04-07 14:01:08.038991', NULL, 0.00, 0.00, 'Not Completed', 0.00, 0.00, 0.05),
+(36, '2024-04-07 14:01:30.954937', '2024-04-07 14:01:30.954937', NULL, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(37, '2024-04-07 14:29:42.004090', '2024-04-07 14:29:42.004114', 2, 250.95, 0.00, 'Not Completed', 239.00, 11.95, 0.05),
+(38, '2024-04-07 14:36:55.912179', '2024-04-07 14:36:55.912179', NULL, 389.55, 0.00, 'Not Completed', 371.00, 18.55, 0.05),
+(39, '2024-04-07 16:28:59.951084', '2024-04-07 16:28:59.951120', NULL, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(40, '2024-04-07 20:35:18.537516', '2024-04-07 20:35:18.537541', NULL, 302.40, 0.00, 'Not Completed', 288.00, 14.40, 0.05),
+(42, '2024-04-07 22:26:42.435892', '2024-04-07 22:26:42.435916', NULL, 51.45, 0.00, 'Not Completed', 49.00, 2.45, 0.05),
+(44, '2024-04-08 12:44:29.428683', '2024-04-08 12:44:29.428707', NULL, 302.40, 0.00, 'Not Completed', 288.00, 14.40, 0.05),
+(45, '2024-04-08 16:17:08.518476', '2024-04-08 16:17:08.518541', NULL, 250.95, 0.00, 'Not Completed', 239.00, 11.95, 0.05),
+(46, '2024-04-08 16:41:19.473287', '2024-04-08 16:41:19.473310', NULL, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(47, '2024-04-08 16:45:25.755466', '2024-04-08 16:45:25.755489', NULL, 0.00, 0.00, 'Not Completed', 0.00, 0.00, 0.05),
+(48, '2024-04-08 16:47:15.876714', '2024-04-08 16:47:15.876714', NULL, 0.00, 0.00, 'Not Completed', 0.00, 0.00, 0.05),
+(49, '2024-04-08 16:47:39.948075', '2024-04-08 16:47:39.948075', NULL, 51.45, 0.00, 'Not Completed', 49.00, 2.45, 0.05),
+(50, '2024-04-08 16:56:22.334280', '2024-04-08 16:56:22.334303', NULL, 250.95, 0.00, 'Not Completed', 239.00, 11.95, 0.05),
+(51, '2024-04-08 17:32:36.632823', '2024-04-08 17:32:36.632847', NULL, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(53, '2024-04-09 10:42:39.293785', '2024-04-09 10:42:39.293808', NULL, 51.45, 0.00, 'Not Completed', 49.00, 2.45, 0.05),
+(54, '2024-04-09 10:45:53.087464', '2024-04-09 10:45:53.087488', NULL, 250.95, 0.00, 'Not Completed', 239.00, 11.95, 0.05),
+(55, '2024-04-09 10:48:27.085055', '2024-04-09 10:48:27.085077', NULL, 0.00, 0.00, 'Not Completed', 0.00, 0.00, 0.05),
+(56, '2024-04-09 10:48:45.033650', '2024-04-09 10:48:45.033650', NULL, 250.95, 0.00, 'Not Completed', 239.00, 11.95, 0.05),
+(57, '2024-04-09 10:51:11.336362', '2024-04-09 10:51:11.336386', NULL, 0.00, 0.00, 'Not Completed', 0.00, 0.00, 0.05),
+(58, '2024-04-09 10:51:44.646695', '2024-04-09 10:51:44.646696', NULL, 138.60, 0.00, 'Not Completed', 132.00, 6.60, 0.05),
+(59, '2024-04-09 10:54:46.261671', '2024-04-09 10:54:46.261708', NULL, 157.50, 0.00, 'Not Completed', 150.00, 7.50, 0.05),
+(60, '2024-04-09 12:31:32.347999', '2024-04-09 12:31:32.348051', 3, 353.85, 0.00, 'Not Completed', 337.00, 16.85, 0.05),
+(61, '2024-04-09 12:53:42.175939', '2024-04-09 12:53:42.175963', 4, 315.00, 0.00, 'Payed', 300.00, 15.00, 0.05),
+(62, '2024-04-09 13:38:01.405895', '2024-04-09 13:38:01.405895', 5, 102.90, 0.00, 'Payed', 98.00, 4.90, 0.05);
 
 -- --------------------------------------------------------
 
@@ -114,8 +143,31 @@ CREATE TABLE `OrderDetails` (
 --
 
 INSERT INTO `OrderDetails` (`Id`, `ProductId`, `Quantity`, `Price`, `OrderId`) VALUES
-(20, 1, 1, 239.00, 29),
-(21, 2, 1, 132.00, 29);
+(22, 2, 1, 132.00, 30),
+(23, 2, 1, 132.00, 36),
+(24, 1, 1, 239.00, 37),
+(25, 2, 1, 132.00, 38),
+(26, 1, 1, 239.00, 38),
+(27, 2, 1, 132.00, 39),
+(28, 5, 1, 49.00, 40),
+(29, 1, 1, 239.00, 40),
+(32, 4, 1, 49.00, 42),
+(35, 1, 1, 239.00, 44),
+(36, 5, 1, 49.00, 44),
+(37, 1, 1, 239.00, 45),
+(38, 2, 1, 132.00, 46),
+(39, 4, 1, 49.00, 49),
+(40, 1, 1, 239.00, 50),
+(41, 2, 1, 132.00, 51),
+(43, 4, 1, 49.00, 53),
+(44, 1, 1, 239.00, 54),
+(45, 1, 1, 239.00, 56),
+(46, 2, 1, 132.00, 58),
+(47, 3, 1, 150.00, 59),
+(48, 1, 1, 239.00, 60),
+(49, 5, 2, 49.00, 60),
+(50, 3, 2, 150.00, 61),
+(51, 5, 2, 49.00, 62);
 
 -- --------------------------------------------------------
 
@@ -136,7 +188,32 @@ CREATE TABLE `Orders` (
 --
 
 INSERT INTO `Orders` (`Id`, `CreatedAt`, `UpdatedAt`, `Status`, `CustomerId`) VALUES
-(29, '2024-04-07 12:25:16.060316', '2024-04-07 12:25:16.060372', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae');
+(30, '2024-04-07 13:53:17.195738', '2024-04-07 13:53:17.195879', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(35, '2024-04-07 14:01:07.919183', '2024-04-07 14:01:07.919207', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(36, '2024-04-07 14:01:30.900932', '2024-04-07 14:01:30.900933', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(37, '2024-04-07 14:29:41.919446', '2024-04-07 14:29:41.919511', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(38, '2024-04-07 14:36:55.889553', '2024-04-07 14:36:55.889553', 'Evaluating', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(39, '2024-04-07 16:28:59.840249', '2024-04-07 16:28:59.840280', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(40, '2024-04-07 20:35:18.464951', '2024-04-07 20:35:18.464981', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(42, '2024-04-07 22:26:42.288824', '2024-04-07 22:26:42.288851', 'Delivering', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(44, '2024-04-08 12:44:29.277373', '2024-04-08 12:44:29.277397', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(45, '2024-04-08 16:17:08.374344', '2024-04-08 16:17:08.374531', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(46, '2024-04-08 16:41:19.315450', '2024-04-08 16:41:19.315493', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(47, '2024-04-08 16:45:25.635664', '2024-04-08 16:45:25.635690', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(48, '2024-04-08 16:47:15.863958', '2024-04-08 16:47:15.863959', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(49, '2024-04-08 16:47:39.908674', '2024-04-08 16:47:39.908674', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(50, '2024-04-08 16:56:22.240620', '2024-04-08 16:56:22.240647', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(51, '2024-04-08 17:32:36.533704', '2024-04-08 17:32:36.533728', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(53, '2024-04-09 10:42:39.135214', '2024-04-09 10:42:39.135263', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(54, '2024-04-09 10:45:52.942145', '2024-04-09 10:45:52.942172', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(55, '2024-04-09 10:48:26.965258', '2024-04-09 10:48:26.965279', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(56, '2024-04-09 10:48:44.990920', '2024-04-09 10:48:44.990920', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(57, '2024-04-09 10:51:11.213763', '2024-04-09 10:51:11.213805', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(58, '2024-04-09 10:51:44.605243', '2024-04-09 10:51:44.605243', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(59, '2024-04-09 10:54:46.124949', '2024-04-09 10:54:46.125009', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(60, '2024-04-09 12:31:32.307964', '2024-04-09 12:31:32.308069', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(61, '2024-04-09 12:53:42.021977', '2024-04-09 12:53:42.022010', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae'),
+(62, '2024-04-09 13:38:01.357902', '2024-04-09 13:38:01.357902', 'Waiting Confirmed', '13156f9c-ebe9-43e4-958b-66bf0fe0dcae');
 
 -- --------------------------------------------------------
 
@@ -149,6 +226,17 @@ CREATE TABLE `Payment` (
   `Amount` decimal(18,2) NOT NULL,
   `CreatedAt` datetime(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `Payment`
+--
+
+INSERT INTO `Payment` (`Id`, `Amount`, `CreatedAt`) VALUES
+(1, 138.60, '2024-04-09 12:00:11.486968'),
+(2, 250.95, '2024-04-09 12:27:53.439196'),
+(3, 353.85, '2024-04-09 12:31:41.927075'),
+(4, 315.00, '2024-04-09 12:53:50.335056'),
+(5, 102.90, '2024-04-09 13:38:50.189284');
 
 -- --------------------------------------------------------
 
@@ -173,7 +261,9 @@ CREATE TABLE `Products` (
 INSERT INTO `Products` (`Id`, `Name`, `Description`, `OriginalPrice`, `Size`, `Color`, `categoryId`) VALUES
 (1, 'Air Jordan 1 Low', 'Inspired by the original that debuted in 1985, the Air Jordan 1 Low offers a clean, classic look that\'s familiar yet always fresh. With an iconic design that pairs perfectly with any \'fit, these kicks ensure you\'ll always be on point.', 239.00, 'EU 42', 'Green Glow', 1),
 (2, 'Nike Air Force 1 \'07', 'The radiance lives on in the Nike Air Force 1 \'07, the basketball original that puts a fresh spin on what you know best: durably stitched overlays, clean finishes and the perfect amount of flash to make you shine.', 132.00, 'EU 38.5', 'Back & White', 1),
-(3, 'Nike Killshot 2 Leather', 'Inspired by the original low-profile tennis shoes, the Nike Killshot 2 updates the upper with various textured leathers to create a fresh take on an old-school look. And it wouldn\'t be a \"tennis\" shoe without the gum-rubber sole\'s reliable traction. From soft suedes to smooth leathers with the perfect sheen, it\'s classic courtside attitude with a modern touch.', 150.00, 'EU 44.5', 'Cream II/Black/Gum Medium Brown/White', 1);
+(3, 'Nike Killshot 2 Leather', 'Inspired by the original low-profile tennis shoes, the Nike Killshot 2 updates the upper with various textured leathers to create a fresh take on an old-school look. And it wouldn\'t be a \"tennis\" shoe without the gum-rubber sole\'s reliable traction. From soft suedes to smooth leathers with the perfect sheen, it\'s classic courtside attitude with a modern touch.', 150.00, 'EU 44.5', 'Cream II/Black/Gum Medium Brown/White', 1),
+(4, 'Jordan Flight MVP', 'What happens when you re-imagine Jordan history through a painter\'s eyes? You get a soft, midweight cotton tee with style like no other.', 49.00, 'US XL', 'Pure Platinum', 2),
+(5, 'Jordan Flight MVP 2', 'Shout out Jordan\'s time on the baseball diamond in this classic cotton tee. Made from midweight cotton that\'s soft and structured, its big and bold graphic puts a new spin on the Jumpman.', 49.00, 'US XL', 'Black/White/White', 2);
 
 -- --------------------------------------------------------
 
@@ -206,7 +296,6 @@ CREATE TABLE `Roles` (
 --
 
 INSERT INTO `Roles` (`Id`, `Name`, `NormalizedName`, `ConcurrencyStamp`) VALUES
-('09117b23-253a-4cf8-83c9-177b22b7003b', 'Retailer', 'RETAILER', NULL),
 ('0c0b6518-9c59-45bb-a30b-61cde135cb96', 'System Admin', 'SYSTEM ADMIN', NULL),
 ('cdb71db7-5adf-4bea-acc8-35b5172758e6', 'Customer', 'CUSTOMER', NULL);
 
@@ -259,11 +348,11 @@ CREATE TABLE `UserRoles` (
 --
 
 INSERT INTO `UserRoles` (`UserId`, `RoleId`) VALUES
-('b086b6b6-ba84-4782-b4c0-60023c05a84f', '09117b23-253a-4cf8-83c9-177b22b7003b'),
 ('18da8db5-cb2d-412c-b732-727e73b5572c', '0c0b6518-9c59-45bb-a30b-61cde135cb96'),
 ('bf1ca23c-b4bd-444d-9712-e995d3db3b74', '0c0b6518-9c59-45bb-a30b-61cde135cb96'),
 ('08bdc2e3-1f94-4189-845e-63d94dd66d6f', 'cdb71db7-5adf-4bea-acc8-35b5172758e6'),
 ('13156f9c-ebe9-43e4-958b-66bf0fe0dcae', 'cdb71db7-5adf-4bea-acc8-35b5172758e6'),
+('4815b015-845a-4bea-b933-13bf4d75f6ca', 'cdb71db7-5adf-4bea-acc8-35b5172758e6'),
 ('b086b6b6-ba84-4782-b4c0-60023c05a84f', 'cdb71db7-5adf-4bea-acc8-35b5172758e6');
 
 -- --------------------------------------------------------
@@ -307,7 +396,7 @@ INSERT INTO `Users` (`Id`, `FullName`, `Contact`, `Address`, `UserName`, `Normal
 ('0f08c33e-0eb9-4fdd-9449-6f7b90ee96b0', NULL, NULL, NULL, 'user47', 'USER47', 'user47@gmail.com', 'USER47@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEFJxXb+QcwrzjJEW7ZALCvFZx4429jGjhDKTWjjNqAEiQIst9qQynGzCvhLNfmdOeg==', 'DBMLLKPTN2AZTWXPIHQ5KQ3YC4N4KS7Z', '083998e6-348b-447f-86f1-63db01c88108', NULL, 0, 0, NULL, 1, 0),
 ('0fb19f12-e669-40a9-8923-f9bbb4fc85c6', NULL, NULL, NULL, 'user21', 'USER21', 'user21@gmail.com', 'USER21@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEK7GpcZMKecnnXOketpmqigV/5RUIkyM4qRpLyKHIFGsuQKDcsMTt1RXXNKOnwmlzg==', '6TGAKIP56OM2Y5OUL26PLCEGEIZAVYA7', 'bb80f18d-0ef6-4d92-8dcf-c48f0ece8e42', NULL, 0, 0, NULL, 1, 0),
 ('11349bfc-68d8-4f5a-9af6-ef840f6b133b', NULL, NULL, NULL, 'user58', 'USER58', 'user58@gmail.com', 'USER58@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEE80owGGJo792GIsKxJAuO+qcDL3hj6g/BO/YZu7jcm7t1UfFQGrtytOC6xHuEhW2g==', 'XJUQIF73UTP76DT2W4JDK5YA3C47OUGT', '1fd56f63-90b7-43e9-80ec-d9899ece0ba4', NULL, 0, 0, NULL, 1, 0),
-('13156f9c-ebe9-43e4-958b-66bf0fe0dcae', 'Trần Nhựt Anh', NULL, 'BR_VT province', 'trannhutanh654@gmail.com', 'TRANNHUTANH654@GMAIL.COM', 'trannhutanh654@gmail.com', 'TRANNHUTANH654@GMAIL.COM', 0, NULL, '6QIX64HVDKWQNYXOKSVL6U4FOC46I2CH', 'bbf18946-76c6-4636-8f13-f60c6e0459cc', '0392687783', 0, 0, NULL, 1, 0),
+('13156f9c-ebe9-43e4-958b-66bf0fe0dcae', 'Trần Nhựt Anh', NULL, '19 Nguyễn Hữu Thọ , Tân Phong, Quận 7, HCM', 'trannhutanh654@gmail.com', 'TRANNHUTANH654@GMAIL.COM', 'trannhutanh654@gmail.com', 'TRANNHUTANH654@GMAIL.COM', 1, NULL, '6QIX64HVDKWQNYXOKSVL6U4FOC46I2CH', 'e65424dd-539b-4023-a012-332a89000870', '0392687783', 0, 0, '2024-04-08 07:35:27', 1, 3),
 ('18da8db5-cb2d-412c-b732-727e73b5572c', NULL, NULL, NULL, 'user1', 'USER1', 'user1@gmail.com', 'USER1@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEHR/hxT1Tzsr/KM4Vq+bz9PyJFQRCkzjKG42PeHRngx/m5M7MwBNAQhJJzh1+XAVmw==', 'PORRAO6FAH7RIOLSBOWPRR7T7BLDBFNW', 'd3a7211c-2cb5-4d1c-8bb6-b119092d29d9', NULL, 0, 0, NULL, 1, 0),
 ('23957a0e-ce06-4c4f-9af3-345265b60ed5', NULL, NULL, NULL, 'user68', 'USER68', 'user68@gmail.com', 'USER68@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEIbyFbGaAOC1Z6qYSSDZf8c0lkCeOWI6PPLTuaDX3EJehKjnp/qSbGc+plqg7m0giw==', 'Q6MOHCY3RA27OVHWA6EVQTG4DQJNAA2F', '71afaed6-e0a4-4ed7-a002-2f217afa3d39', NULL, 0, 0, NULL, 1, 0),
 ('2f9c4d8f-879f-4159-bc4e-efc8120a5cac', NULL, NULL, NULL, 'user78', 'USER78', 'user78@gmail.com', 'USER78@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEGAxzbHZ51piFVeevKseovueqpUhDj7Nr4tJ6tpVQ5XA9zGvor11hTm5e9YlLtj3Jw==', 'HNG3D5XPICJCOL7GT7ZFLZ3NCBCZYXYP', '38ee12d8-53ef-49b7-aa7b-59694cea9afd', NULL, 0, 0, NULL, 1, 0),
@@ -319,7 +408,7 @@ INSERT INTO `Users` (`Id`, `FullName`, `Contact`, `Address`, `UserName`, `Normal
 ('3b4ad30e-c5a8-4743-bdd6-29d833da3930', NULL, NULL, NULL, 'user45', 'USER45', 'user45@gmail.com', 'USER45@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEL44nkifWniMlUgINnq9nwVQyWvsDqNKUKHaM8sAE399OpiWlIdgG0s9PQj3QEY8HA==', 'RMRJXSXF55WHLET4F4RH5RVCUVAY2M6O', '6316b08e-5db7-410a-8fba-58b40040bec3', NULL, 0, 0, NULL, 1, 0),
 ('3f1fe852-0dff-43ea-879e-beea528fa86b', NULL, NULL, NULL, 'user23', 'USER23', 'user23@gmail.com', 'USER23@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEA/F3l//7pE2eKUHYKMUGTCDQyrlf1WsFGDZl24cM4n/99imT9Nt9XXXGDvSPBjvCw==', 'FPDF7AJM3SY2REGRLNPXCWFD5QZRAMVS', '9963e56c-82e6-482f-b376-5a71ac66366d', NULL, 0, 0, NULL, 1, 0),
 ('400571da-232f-4045-bf62-1c181456900b', NULL, NULL, NULL, 'user96', 'USER96', 'user96@gmail.com', 'USER96@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEIHZz4B36ymmicvfCN9kuFYpG9NTeJo8SKiw5cqLgxRFit0aHswnrSD+7bqZYB177g==', 'ZUW5PFYBBP26UWXMMRQY2M7VRREORGQK', '6ed39e1d-1911-414f-b5d2-16e73cfdcf09', NULL, 0, 0, NULL, 1, 0),
-('4815b015-845a-4bea-b933-13bf4d75f6ca', 'Mark Twain', NULL, NULL, 'yenow65052@felibg.com', 'YENOW65052@FELIBG.COM', 'yenow65052@felibg.com', 'YENOW65052@FELIBG.COM', 0, 'AQAAAAIAAYagAAAAEF7GdEdE0NfbZaljh65HJmuAQPRiq7MF9iyPNxRN+nQXq4B8/59H2IgKr83yHlT67A==', 'Y5TFOWG66SXGXNBDFD6AYEK6PPVL3AG4', 'aa34313f-8973-43c6-bf0e-3d35735936fe', NULL, 0, 0, NULL, 1, 0),
+('4815b015-845a-4bea-b933-13bf4d75f6ca', 'Trần Nhựt Anh', NULL, '29 đường 81 Tân Quy Quận 7', 'yenow65052@felibg.com', 'YENOW65052@FELIBG.COM', 'yenow65052@felibg.com', 'YENOW65052@FELIBG.COM', 1, 'AQAAAAIAAYagAAAAEEg2bkhuPsly1Bp8WO8Ge93B1TzkacnJAucbKpdo32AXwmObllEwnrHzxossMUk8/Q==', 'HYBLX4KM4UTEQIVO3Z7RRBRDCOVLMVC6', 'a73ead43-1837-4aae-8b55-311913d37242', '22331243124', 0, 0, NULL, 1, 0),
 ('494c7e0e-edf5-4f6c-a936-e7e475df4f14', NULL, NULL, NULL, 'user66', 'USER66', 'user66@gmail.com', 'USER66@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEKMD3SqXnPGm4qhrvIOYC/TauxAguZ7D6zciNmm52klLVbh6IJx4+/86J9+ujO4BYw==', 'DG4IZ3DSUFJSAHQXEKRCQFCLVIT3XLPK', 'ca76f70b-8649-40f5-8a14-efa160176b5c', NULL, 0, 0, NULL, 1, 0),
 ('4e0d7bf7-84f1-4033-870f-a81dcff97279', NULL, NULL, NULL, 'user91', 'USER91', 'user91@gmail.com', 'USER91@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAENo1AyFvf+2SRLYNTVEl7zRB+s5FL6W+CkWgoCn6KPXl/zurMlbRE8EXfUye5tHLSw==', 'CVZ4G37UMS2FJYPHE53BUO7SNZITATCQ', '66958cb6-ec45-4e27-ab8b-901c85d66ac3', NULL, 0, 0, NULL, 1, 0),
 ('4f8f2e30-fcac-48cf-a40a-cd8ddb5bad08', NULL, NULL, NULL, 'user64', 'USER64', 'user64@gmail.com', 'USER64@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAELr3ZjqeSG5ib5sQfmjlwjawW4dKpu4rF+v7QjkaBd7sHrN/wPjJw/K5GUAwiCjxkA==', 'FLM4FQRXQBEXZOWGOW7N4RB6OGXIJ6B3', 'f36e8622-29b3-446c-ad4e-708c38c830fe', NULL, 0, 0, NULL, 1, 0),
@@ -335,7 +424,7 @@ INSERT INTO `Users` (`Id`, `FullName`, `Contact`, `Address`, `UserName`, `Normal
 ('643984b9-a7e3-44fe-b235-d28917c7757b', NULL, NULL, NULL, 'user4', 'USER4', 'user4@gmail.com', 'USER4@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEKGNLk8lLbuXaqxZ6hgtlR7OKsb4CEi5nREfQw/iCkX/h/9xpdDHdG1K5LkjaOvBhg==', 'VGUKVNR2FDPO6VFHUSWBJLXAE6AFMFE3', '118ffad3-2742-45ea-aa4d-4d9cae2f271d', NULL, 0, 0, NULL, 1, 0),
 ('66ade869-423d-4a27-8d00-2413e3421030', NULL, NULL, NULL, 'user82', 'USER82', 'user82@gmail.com', 'USER82@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEMau8i2iGUR6zyKmtxSxH2RPvQjroO5d6PnvihbTYCTN+0NZaoajKMZ5btVTPBoY3w==', 'Y3EIMZEHLHATTTW6H5CS53ANK3NYHY36', '059731fc-3272-4d36-9130-c97246dafa56', NULL, 0, 0, NULL, 1, 0),
 ('66b4f8be-f3a7-4d73-8dea-6895172cd747', NULL, NULL, NULL, 'user40', 'USER40', 'user40@gmail.com', 'USER40@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEN4SnFYV4D6hfSi5IyzZ/m/rVGpOqpfvDDYLemKeV7dECgXfwdVzVseKUAKmXyMUcA==', 'XWDXXVGEDP2GJS3KW45EOD4KPPTOUWOR', '5448d5bf-3621-4ead-8c48-1fe36469e697', NULL, 0, 0, NULL, 1, 0),
-('6c2ba371-1cd7-4b63-93fa-7b0e45598d19', NULL, NULL, NULL, 'user11', 'USER11', 'user11@gmail.com', 'USER11@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEM2tOhqXGgSRyTEHSXbfqJE5st4x8z31e+Ay6LWfemGpbqhtI21mIL5/n7vrMW3bYQ==', 'Q7SHYRL7237BXENJH4M3IJXQKWKHAT7W', 'ae5c9506-d2d8-4200-a1e8-9e16328064c0', NULL, 0, 0, NULL, 1, 0),
+('6c2ba371-1cd7-4b63-93fa-7b0e45598d19', NULL, NULL, NULL, 'user11', 'USER11', 'user11@gmail.com', 'USER11@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEM2tOhqXGgSRyTEHSXbfqJE5st4x8z31e+Ay6LWfemGpbqhtI21mIL5/n7vrMW3bYQ==', 'Q7SHYRL7237BXENJH4M3IJXQKWKHAT7W', 'e62ede7d-22ae-405a-8660-dad2b72736a3', NULL, 0, 0, NULL, 1, 0),
 ('6ef8035a-cff0-441a-86a2-a863ad9b1347', NULL, NULL, NULL, 'user31', 'USER31', 'user31@gmail.com', 'USER31@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAED3gQphdTyKdkj/aqTOOT0cK0bVupEXYWZ5Bw3N73HNGeHKtUSF0H5hl+o50ki5Czg==', 'VYVRYF24F7OMQLOE2QFAKGXBOLCNKGUW', 'bd7b862c-2f54-4809-89b0-3594716c44e4', NULL, 0, 0, NULL, 1, 0),
 ('6fab10c3-ec48-4d89-8c00-3a37dec07a06', NULL, NULL, NULL, 'user32', 'USER32', 'user32@gmail.com', 'USER32@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEPGybJcbYL6Z+q7eM7P8wqab2mM9kikzaw8y+Pil5BljFXS4w9I2V56NLrj2UQScaQ==', 'VYRZZ5IJLFCM7ZPZ2KQ3ZKALP6CQFDNF', 'c48fd074-77d5-4327-94fb-ba4248c69b8b', NULL, 0, 0, NULL, 1, 0),
 ('719e129d-425a-4f21-860f-42e756f99bba', NULL, NULL, NULL, 'user98', 'USER98', 'user98@gmail.com', 'USER98@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEDBBdpyFXrrce/llkfl7cfIVWFAwWcSnJ6HkOt9+5syCTbJZ+QG82O5vqxW4PxohOQ==', 'GR4ZCTEYRT2MWHOFCBNVG7WSRA4QHZK5', '32e52e7f-91a7-48b3-acfa-7f6562b25c36', NULL, 0, 0, NULL, 1, 0),
@@ -374,7 +463,7 @@ INSERT INTO `Users` (`Id`, `FullName`, `Contact`, `Address`, `UserName`, `Normal
 ('ba9d6cc3-35ab-4f5c-b919-71ba01e44926', NULL, NULL, NULL, 'user7', 'USER7', 'user7@gmail.com', 'USER7@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEPOlf3MU8lwwi309t/GjR755tvHhLDHpHZaOr5en3omgN9SO8KowYZlYMcUMndLqtA==', 'WMV4YMBFJV3Y3IWY6VWC25KGN7LNPYAN', '47c60e79-0213-4d15-ae0d-b585ceabadf5', NULL, 0, 0, NULL, 1, 0),
 ('bab08a6b-f807-463f-b28e-e3e895cb1429', NULL, NULL, NULL, 'user25', 'USER25', 'user25@gmail.com', 'USER25@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAELzeAvv730iwGMvWABkcure4aKGvDEx9cuum/RZUxJD703W7VA5dNdV/GZ0gEu1lXg==', 'PXVPMDKUPC4YNU3FF5CZVSFVU766QISB', '4633a640-03ec-49cf-9f96-9c98faff2fd3', NULL, 0, 0, NULL, 1, 0),
 ('beef8db4-2369-4a9d-a6db-6800eb8655e6', NULL, NULL, NULL, 'user84', 'USER84', 'user84@gmail.com', 'USER84@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEIkeFH64jCnSI+LKDDgv+9d5bWpYGNZ/Zkym5pJr1uAFbaKQD9GRihP7Lu7B/Jr5PQ==', 'V764U3JU5DXEY3KRAJ7LV22YY5WXDUUV', 'f641946c-dadb-418b-b945-dc3269193d18', NULL, 0, 0, NULL, 1, 0),
-('bf1ca23c-b4bd-444d-9712-e995d3db3b74', 'John Doe', NULL, 'District 7 HCM', 'lovecraftmad08@gmail.com', 'LOVECRAFTMAD08@GMAIL.COM', 'lovecraftmad08@gmail.com', 'LOVECRAFTMAD08@GMAIL.COM', 1, 'AQAAAAIAAYagAAAAEEWzh4UowF6lNW82KsGCEQDnFNOeDZxqywVIkNBRtO+Pss9Z16M7yhDMUX4TbJQxmw==', '47DCKHHYBM26RA2WNMKAYZF7YS7TMHBB', 'a85f117a-93b6-4af8-9ae3-a1ab88b240a1', NULL, 0, 0, NULL, 1, 0),
+('bf1ca23c-b4bd-444d-9712-e995d3db3b74', 'John Doe', NULL, 'District 7 HCM', 'lovecraftmad08@gmail.com', 'LOVECRAFTMAD08@GMAIL.COM', 'lovecraftmad08@gmail.com', 'LOVECRAFTMAD08@GMAIL.COM', 1, 'AQAAAAIAAYagAAAAEEWzh4UowF6lNW82KsGCEQDnFNOeDZxqywVIkNBRtO+Pss9Z16M7yhDMUX4TbJQxmw==', '47DCKHHYBM26RA2WNMKAYZF7YS7TMHBB', '393fcfa0-406b-4a6b-8fad-69e905b75194', NULL, 0, 0, NULL, 1, 0),
 ('c21b5ff4-ee35-43cd-bf29-d235811e75d4', NULL, NULL, NULL, 'user35', 'USER35', 'user35@gmail.com', 'USER35@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEIdFk5Fg1Xgr2fEGAbpDhtIDkh2zrLwz9refQ4XCWVn0APMYwq5DtM6cwZJVbFQQbw==', '5CTINS2WOYRPW6LLECSXPOLV7OZ3OHAB', '1c80a727-bb8b-4be1-b812-0e9eff3e1466', NULL, 0, 0, NULL, 1, 0),
 ('c2723130-e91f-47a3-9ca8-cbb9ea79e323', NULL, NULL, NULL, 'user36', 'USER36', 'user36@gmail.com', 'USER36@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEAXjzjYzZHekUbWME9mLGo5FYYj0MlkzfH/g5K53N/I207LrOy3ZDhsExBQaFoGTHw==', 'M4IIJH7XBSYHDKN2GC5C25OIQ57LWOKR', '4fcdf6bb-e9fd-4df7-b2c6-5d3921f3c7b5', NULL, 0, 0, NULL, 1, 0),
 ('c3f375f7-86b4-4c7a-8d47-69db0bf41cc6', NULL, NULL, NULL, 'user90', 'USER90', 'user90@gmail.com', 'USER90@GMAIL.COM', 0, 'AQAAAAIAAYagAAAAEKwxdu4z5bske4RmwSLWGJS6PuwJrmNnmNix6weeFveGfrCSq7HWl7DT2p3vTkkITQ==', 'HNJXPLOD3USK6AI6YN4RZPE4DL2VOIHQ', 'b994d414-bd7a-447f-9092-25139915b310', NULL, 0, 0, NULL, 1, 0),
@@ -560,31 +649,31 @@ ALTER TABLE `Categories`
 -- AUTO_INCREMENT for table `Images`
 --
 ALTER TABLE `Images`
-  MODIFY `ImageId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `ImageId` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `OrderDetails`
 --
 ALTER TABLE `OrderDetails`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT for table `Orders`
 --
 ALTER TABLE `Orders`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=63;
 
 --
 -- AUTO_INCREMENT for table `Payment`
 --
 ALTER TABLE `Payment`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `Products`
 --
 ALTER TABLE `Products`
-  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `RoleClaims`
